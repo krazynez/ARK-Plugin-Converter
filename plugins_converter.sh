@@ -24,7 +24,7 @@ fi
 
 SEPLUGINS_LOC="$location/seplugins"
 
-if [[ ! -d $SEPLUGINS_LOC ]]; then
+if [ ! -d $SEPLUGINS_LOC ]; then
 	printf "\nERR: Hmmmmm can't seem to find the seplugins folder on the root of your PSP\n\nBailing out!\n\n"
 	exit 1;
 fi
@@ -54,6 +54,19 @@ for i in $SEPLUGINS_LOC/*; do
 		VSH_TXT="$j"
 		VSH_TXT_EXISIT="true"
 	fi
+	if [ ${j,,} == "plugins.txt" ]; then
+		printf "\nLooks like there already is a plugins.txt. Located : $SEPLUGINS_LOC\n\n"
+		read -p "Would you like to override it? y/n: " override_it
+	
+		if [[ $override_it =~ ^(n|N)$ ]]; then
+			printf "\n\nSorry I can't go any further. Good Bye...\n\n"
+			exit 0;
+		else
+			rm $SEPLUGINS_LOC/${j,,}
+		fi
+	fi
+
+
 done
 
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
@@ -83,6 +96,6 @@ if [[ $VSH_TXT_EXISIT == "true" && `awk '{print $1}' vsh.txt | head -n 1` != "vs
 	fi
 fi
 
-
+printf "\nConvertion Complete.\n\nplugins.txt located: $SEPLUGINS_LOC/plugins.txt\n\n"
 
 popd >/dev/null
