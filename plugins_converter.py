@@ -79,7 +79,7 @@ for i in glob.glob(f'{SEPLUGINS_LOC}/*'):
             print("\n\nSorry I can't go any further. Good Bye...\n\n")
             sys.exit(0);
         else:
-            os.remove(f'{SEPLUGINS_LOC}/plugins.txt')
+            os.rename(f'{SEPLUGINS_LOC}/plugins.txt', f'{SEPLUGINS_LOC}/plugins.txt.bak')
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
 

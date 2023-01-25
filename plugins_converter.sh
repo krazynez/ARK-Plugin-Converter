@@ -62,7 +62,7 @@ for i in $SEPLUGINS_LOC/*; do
 			printf "\n\nSorry I can't go any further. Good Bye...\n\n"
 			exit 0;
 		else
-			rm $SEPLUGINS_LOC/${j,,}
+			mv $SEPLUGINS_LOC/${j,,} "$SEPLUGINS_LOC/${j,,}.bak"
 		fi
 	fi
 
@@ -73,7 +73,7 @@ done
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
 
 if [[ $GAME_TXT_EXISIT == "true" && `awk '{print $1}' game.txt | head -n 1` != "game," ]]; then
-	if [ `awk -F: '{print $1}' $SEPLUGINS_LOC/$GAME_TXT` == "ef0" ]; then
+	if [[ `awk -F: '{print $1}' $SEPLUGINS_LOC/$GAME_TXT` == "ef0" ]]; then
 		sed -e "s/prx /prx, /g" -e "s/ef0/game, ef0/g" $SEPLUGINS_LOC/$GAME_TXT >> $SEPLUGINS_LOC/plugins.txt
 	else
 		sed -e "s/prx /prx, /g" -e "s/ms0/game, ms0/g" $SEPLUGINS_LOC/$GAME_TXT >> $SEPLUGINS_LOC/plugins.txt
@@ -81,7 +81,7 @@ if [[ $GAME_TXT_EXISIT == "true" && `awk '{print $1}' game.txt | head -n 1` != "
 fi
 
 if [[ $POPS_TXT_EXISIT == "true" && `awk '{print $1}' pops.txt | head -n 1` != "pops," ]]; then
-	if [ `awk -F: '{print $1}' $SEPLUGINS_LOC/$POPS_TXT` == "ef0" ]; then
+	if [[ `awk -F: '{print $1}' $SEPLUGINS_LOC/$POPS_TXT` == "ef0" ]]; then
 		sed -e "s/prx /prx, /g" -e "s/ef0/pops, ef0/g" $SEPLUGINS_LOC/$POPS_TXT >> $SEPLUGINS_LOC/plugins.txt
 	else
 		sed -e "s/prx /prx, /g" -e "s/ms0/pops, ms0/g" $SEPLUGINS_LOC/$POPS_TXT >> $SEPLUGINS_LOC/plugins.txt
@@ -89,7 +89,7 @@ if [[ $POPS_TXT_EXISIT == "true" && `awk '{print $1}' pops.txt | head -n 1` != "
 fi
 
 if [[ $VSH_TXT_EXISIT == "true" && `awk '{print $1}' vsh.txt | head -n 1` != "vsh," ]]; then
-	if [ `awk -F: '{print $1}' $SEPLUGINS_LOC/$VSH_TXT` == "ef0" ]; then
+	if [[ `awk -F: '{print $1}' $SEPLUGINS_LOC/$VSH_TXT` == "ef0" ]]; then
 		sed -e "s/prx /prx, /g" -e "s/ef0/vsh, ef0/g" $SEPLUGINS_LOC/$VSH_TXT >> $SEPLUGINS_LOC/plugins.txt
 	else
 		sed -e "s/prx /prx, /g" -e "s/ms0/vsh, ms0/g" $SEPLUGINS_LOC/$VSH_TXT >> $SEPLUGINS_LOC/plugins.txt
