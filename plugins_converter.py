@@ -38,7 +38,10 @@ if not userInput.lower() == 'y':
     print("\nGood Bye!!!\n\n")
     sys.exit();
 
-SEPLUGINS_LOC=f"{location}/seplugins"
+if platform.system().lower() == 'linux':
+    SEPLUGINS_LOC=f"{location}/seplugins"
+else:
+    SEPLUGINS_LOC=f"{location}\\seplugins"
 
 if not os.path.isdir(SEPLUGINS_LOC): 
     print("\nERR: Hmmmmm can't seem to find the seplugins folder on the root of your PSP\n\nBailing out!\n\n")
@@ -141,6 +144,9 @@ if VSH_TXT_EXISIT and FORMAT_CHK != "vsh,":
             vsh_in.close()
 
 
-print(f"\nConvertion Complete.\n\nplugins.txt located: {SEPLUGINS_LOC}/plugins.txt\n\n")
+if platform.system().lower() == 'linux':
+    print(f"\nConvertion Complete.\n\nplugins.txt located: {SEPLUGINS_LOC}/plugins.txt\n\n")
+else:
+    print(f"\nConvertion Complete.\n\nplugins.txt located: {SEPLUGINS_LOC}\\plugins.txt\n\n")
 
 os.chdir(cwd)
