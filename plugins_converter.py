@@ -24,9 +24,9 @@ elif platform.system().lower() == 'windows':
             if chr(drive)+':' == 'D:':
                 print('Drive', chr(drive), 'exists (Probably not this one though, be careful)')
             else:
-                print('Drive', chr(drive), 'exists'
+                print('Drive', chr(drive), 'exists')
 else:
-    print("Nope I do not want to try MacOS or some niche OS unless I have to."
+    print("Nope I do not want to try MacOS or some niche OS unless I have to.")
     sys.exit(1)
 
 location = input('\n\nPlease select your PSP/Memory stick drive location ( i.e /mnt/PSP ): ')
