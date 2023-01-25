@@ -6,7 +6,11 @@
   
   ## Running
 
+Bash
 `./plugins_converter.sh`
+
+Python3
+`./plugins_converter.py`
 
 Follow instructions in script.
 
