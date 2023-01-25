@@ -18,6 +18,7 @@ input('\n\n!!! READ THIS !!!\n\nI am not responsible if you destroy your plugins
 
 if platform.system().lower() == 'linux':
     subprocess.run('/usr/bin/lsblk')
+    location = input('\n\nPlease select your PSP/Memory stick drive location ( i.e /mnt/PSP ): ')
 elif platform.system().lower() == 'windows':
     for drive in range(ord('D'), ord('Z')):
         if os.path.exists(chr(drive)+':'):
@@ -25,11 +26,11 @@ elif platform.system().lower() == 'windows':
                 print('Drive', chr(drive), 'exists (Probably not this one though, be careful)')
             else:
                 print('Drive', chr(drive), 'exists')
+    location = input('\n\nPlease select your PSP/Memory stick drive location ( i.e E:\PSP ): ')
 else:
     print("Nope I do not want to try MacOS or some niche OS unless I have to.")
     sys.exit(1)
 
-location = input('\n\nPlease select your PSP/Memory stick drive location ( i.e /mnt/PSP ): ')
 
 userInput = input(f"Is '{location}' correct? y/n: ")
 
