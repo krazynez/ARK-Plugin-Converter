@@ -18,4 +18,6 @@ Python3
 
 Follow instructions in script.
 
+If you have any bug/issues go [here](https://github.com/krazynez/ARK-Plugin-Converter/issues) and create a bug report please, preferably with screenshots
+
 Enjoy ;-)
