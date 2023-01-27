@@ -8,11 +8,11 @@
   
   ## Running
 
-Bash
+Bash (Linux)
 
 `./plugins_converter.sh`
 
-Python3
+Python3 (Linux/Windows)
 
 `./plugins_converter.py`
 
