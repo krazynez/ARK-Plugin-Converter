@@ -9,6 +9,8 @@
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
 #
 
+read -p $'\n!!! WARNING !!!\n\nPlease use Python version as it includes newer features and bug fixes. $0 will still work for most things, however $0 will be in Legacy (maintence mode) and soon to be removed.\n\n'
+
 read -p $'\n\n!!! READ THIS !!!\n\nI am not responsible if you destroy your plugins files, nor will I be able to fix them.\n\nThis is very much so Alpha software and treat it as so.\n\nIt does support converting POPS, GAME and VSH (.txt) files. \n\nPress enter to continue...'
 
 /usr/bin/lsblk
