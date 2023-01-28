@@ -8,11 +8,11 @@
   
   ## Running
 
-Bash (Linux)
+Bash (Linux) (LEGACY)
 
 `./plugins_converter.sh`
 
-Python3 (Linux/Windows)
+Python3 (Linux/Windows) (STABLE)
 
 `./plugins_converter.py`
 
