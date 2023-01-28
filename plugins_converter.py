@@ -97,6 +97,8 @@ def file_checker(file_name=None):
     if valid.decode('utf-8')[:3] != 'ef0' and valid.decode('utf-8')[:3] != 'ms0':
         print(f"\n\nERR: Your '{file_name}' is not UTF-8! Please make sure it is saved at UTF-8\n")
         sys.exit(1)
+    else:
+        return
 
 
 
@@ -160,9 +162,9 @@ if POPS_TXT_EXISIT:
 
 # VSH
 if VSH_TXT_EXISIT:
-    with open(VSH_TXT) as pops:
-        FORMAT_CHK=pops.readline()
-        pops.close()    
+    with open(VSH_TXT) as vsh:
+        FORMAT_CHK=vsh.readline()
+        vsh.close()    
 
     if "vsh," in FORMAT_CHK:
         print(f"Looks like your already setup, but your {VSH_TXT} is setup like plugins.txt")
