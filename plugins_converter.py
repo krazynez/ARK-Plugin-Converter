@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 import subprocess
 import platform
+import codecs
 import glob
 import sys
 import os
 #
 # Author    : KrazyNez
-# Date      : Jan 24, 2023
-# Version   : 0.07
+# Date      : Jan 28, 2023
+# Version   : 0.10
 #
 #
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
@@ -84,13 +85,36 @@ for i in glob.glob(f'{SEPLUGINS_LOC}/*'):
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
 
 
-# GAME
-with open(GAME_TXT) as game:
-    FORMAT_CHK=game.readline()
-    game.close()    
+def file_checker(file_name=None):
+    if file_name is None:
+        print("Should not be here!")
+        return
+    # Validate UTF-8
+    with open(file_name, 'rb') as check:
+        valid = check.read()
+        check.close()
 
-if GAME_TXT_EXISIT and FORMAT_CHK is not "game,":
-    if FORMAT_CHK == "ef0":
+    if valid.decode('utf-8')[:3] != 'ef0' and valid.decode('utf-8')[:3] != 'ms0':
+        print(f"\n\nERR: Your '{file_name}' is not UTF-8! Please make sure it is saved at UTF-8\n")
+        sys.exit(1)
+
+
+
+# GAME
+if GAME_TXT_EXISIT: 
+
+    with open(GAME_TXT) as game:
+        FORMAT_CHK=game.readline()
+        game.close()    
+
+    if "game," in FORMAT_CHK:
+        print(f"Looks like your already setup, but your {POPS_TXT} is setup like plugins.txt")
+        sys.exit(1)
+
+    # Check if vailid UTF-8 format
+    file_checker(GAME_TXT)
+
+    if "ef0" in FORMAT_CHK:
         with open(GAME_TXT) as game_in:
             with open("plugins.txt", "a") as game_out:
                 for line in game_in:
@@ -106,12 +130,20 @@ if GAME_TXT_EXISIT and FORMAT_CHK is not "game,":
             game_in.close()
 
 # POPS
-with open(POPS_TXT) as pops:
-    FORMAT_CHK=pops.readline()
-    pops.close()    
+if POPS_TXT_EXISIT:
+    with open(POPS_TXT) as pops:
+        FORMAT_CHK=pops.readline()
+        pops.close()    
 
-if POPS_TXT_EXISIT and FORMAT_CHK != "pops,":
-    if FORMAT_CHK == "ef0":
+    if "pops," in FORMAT_CHK:
+        print(f"Looks like your already setup, but your {POPS_TXT} is setup like plugins.txt")
+        sys.exit(1)
+
+
+    # Check if vailid UTF-8 format
+    file_checker(POPS_TXT)
+
+    if "ef0" in FORMAT_CHK:
         with open(POPS_TXT) as pops_in:
             with open("plugins.txt", "a") as pops_out:
                 for line in pops_in:
@@ -127,8 +159,19 @@ if POPS_TXT_EXISIT and FORMAT_CHK != "pops,":
             pops_in.close()
 
 # VSH
-if VSH_TXT_EXISIT and FORMAT_CHK != "vsh,":
-    if FORMAT_CHK == "ef0":
+if VSH_TXT_EXISIT:
+    with open(VSH_TXT) as pops:
+        FORMAT_CHK=pops.readline()
+        pops.close()    
+
+    if "vsh," in FORMAT_CHK:
+        print(f"Looks like your already setup, but your {VSH_TXT} is setup like plugins.txt")
+        sys.exit(1)
+
+    # Check if vailid UTF-8 format
+    file_checker(VSH_TXT)
+
+    if "ef0" in FORMAT_CHK:
         with open(VSH_TXT) as vsh_in:
             with open("plugins.txt", "a") as vsh_out:
                 for line in vsh_in:
