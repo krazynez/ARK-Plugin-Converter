@@ -33,9 +33,9 @@ fi
 
 
 # Globals
-GAME_TXT_EXISIT="false"
-POPS_TXT_EXISIT="false"
-VSH_TXT_EXISIT="false"
+GAME_TXT_EXISTS="false"
+POPS_TXT_EXISTS="false"
+VSH_TXT_EXISTS="false"
 GAME_TXT=''
 POPS_TXT=''
 VSH_TXT=''
@@ -46,15 +46,15 @@ for i in $SEPLUGINS_LOC/*; do
 	j=$(basename $i)
 	if [ ${j,,} == "game.txt" ]; then
 		GAME_TXT="$j"
-		GAME_TXT_EXISIT="true"
+		GAME_TXT_EXISTS="true"
 	fi
 	if [ ${j,,} == "pops.txt" ]; then
 		POPS_TXT="$j"
-		POPS_TXT_EXISIT="true"
+		POPS_TXT_EXISTS="true"
 	fi
 	if [ ${j,,} == "vsh.txt" ]; then
 		VSH_TXT="$j"
-		VSH_TXT_EXISIT="true"
+		VSH_TXT_EXISTS="true"
 	fi
 	if [ ${j,,} == "plugins.txt" ]; then
 		printf "\nLooks like there already is a plugins.txt. Located : $SEPLUGINS_LOC\n\n"
@@ -74,7 +74,7 @@ done
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
 
-if [[ $GAME_TXT_EXISIT == "true" && `awk '{print $1}' game.txt | head -n 1` != "game," ]]; then
+if [[ $GAME_TXT_EXISTS == "true" && `awk '{print $1}' game.txt | head -n 1` != "game," ]]; then
 	if [[ `awk -F: '{print $1}' $SEPLUGINS_LOC/$GAME_TXT` == "ef0" ]]; then
 		sed -e "s/prx /prx, /g" -e "s/ef0/game, ef0/g" $SEPLUGINS_LOC/$GAME_TXT >> $SEPLUGINS_LOC/plugins.txt
 	else
@@ -82,7 +82,7 @@ if [[ $GAME_TXT_EXISIT == "true" && `awk '{print $1}' game.txt | head -n 1` != "
 	fi
 fi
 
-if [[ $POPS_TXT_EXISIT == "true" && `awk '{print $1}' pops.txt | head -n 1` != "pops," ]]; then
+if [[ $POPS_TXT_EXISTS == "true" && `awk '{print $1}' pops.txt | head -n 1` != "pops," ]]; then
 	if [[ `awk -F: '{print $1}' $SEPLUGINS_LOC/$POPS_TXT` == "ef0" ]]; then
 		sed -e "s/prx /prx, /g" -e "s/ef0/pops, ef0/g" $SEPLUGINS_LOC/$POPS_TXT >> $SEPLUGINS_LOC/plugins.txt
 	else
@@ -90,7 +90,7 @@ if [[ $POPS_TXT_EXISIT == "true" && `awk '{print $1}' pops.txt | head -n 1` != "
 	fi
 fi
 
-if [[ $VSH_TXT_EXISIT == "true" && `awk '{print $1}' vsh.txt | head -n 1` != "vsh," ]]; then
+if [[ $VSH_TXT_EXISTS == "true" && `awk '{print $1}' vsh.txt | head -n 1` != "vsh," ]]; then
 	if [[ `awk -F: '{print $1}' $SEPLUGINS_LOC/$VSH_TXT` == "ef0" ]]; then
 		sed -e "s/prx /prx, /g" -e "s/ef0/vsh, ef0/g" $SEPLUGINS_LOC/$VSH_TXT >> $SEPLUGINS_LOC/plugins.txt
 	else

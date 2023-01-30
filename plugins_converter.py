@@ -50,9 +50,9 @@ if not os.path.isdir(SEPLUGINS_LOC):
 
 
 # Globals
-GAME_TXT_EXISIT=False
-POPS_TXT_EXISIT=False
-VSH_TXT_EXISIT=False
+GAME_TXT_EXISTS=False
+POPS_TXT_EXISTS=False
+VSH_TXT_EXISTS=False
 GAME_TXT=''
 POPS_TXT=''
 VSH_TXT=''
@@ -64,13 +64,13 @@ os.chdir(SEPLUGINS_LOC)
 for i in glob.glob(f'{SEPLUGINS_LOC}/*'):
     if os.path.basename(i.lower()) == "game.txt":
         GAME_TXT=os.path.basename(i)
-        GAME_TXT_EXISIT=True
+        GAME_TXT_EXISTS=True
     if os.path.basename(i.lower()) == "pops.txt":
         POPS_TXT=os.path.basename(i)
-        POPS_TXT_EXISIT=True
+        POPS_TXT_EXISTS=True
     if os.path.basename(i.lower()) == "vsh.txt":
         VSH_TXT=os.path.basename(i)
-        VSH_TXT_EXISIT=True
+        VSH_TXT_EXISTS=True
 
     if os.path.isfile("plugins.txt"):
         print(f"\nLooks like there already is a plugins.txt. Located : {SEPLUGINS_LOC}\n\n")
@@ -103,7 +103,7 @@ def file_checker(file_name=None):
 
 
 # GAME
-if GAME_TXT_EXISIT: 
+if GAME_TXT_EXISTS: 
 
     with open(GAME_TXT) as game:
         FORMAT_CHK=game.readline()
@@ -132,7 +132,7 @@ if GAME_TXT_EXISIT:
             game_in.close()
 
 # POPS
-if POPS_TXT_EXISIT:
+if POPS_TXT_EXISTS:
     with open(POPS_TXT) as pops:
         FORMAT_CHK=pops.readline()
         pops.close()    
@@ -161,7 +161,7 @@ if POPS_TXT_EXISIT:
             pops_in.close()
 
 # VSH
-if VSH_TXT_EXISIT:
+if VSH_TXT_EXISTS:
     with open(VSH_TXT) as vsh:
         FORMAT_CHK=vsh.readline()
         vsh.close()    
