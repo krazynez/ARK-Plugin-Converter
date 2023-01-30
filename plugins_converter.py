@@ -7,8 +7,8 @@ import sys
 import os
 #
 # Author    : KrazyNez
-# Date      : Jan 28, 2023
-# Version   : 0.10
+# Date      : Jan 30, 2023
+# Version   : 0.11
 #
 #
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
@@ -85,6 +85,7 @@ for i in glob.glob(f'{SEPLUGINS_LOC}/*'):
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
 
 
+# Validator function
 def file_checker(file_name=None):
     if file_name is None:
         print("Should not be here!")
@@ -104,13 +105,12 @@ def file_checker(file_name=None):
 
 # GAME
 if GAME_TXT_EXISTS: 
-
     with open(GAME_TXT) as game:
         FORMAT_CHK=game.readline()
         game.close()    
 
     if "game," in FORMAT_CHK:
-        print(f"Looks like your already setup, but your {POPS_TXT} is setup like plugins.txt")
+        print(f"Looks like your already setup, but your {GAME_TXT} is setup like plugins.txt")
         sys.exit(1)
 
     # Check if vailid UTF-8 format
