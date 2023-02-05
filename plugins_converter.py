@@ -80,6 +80,8 @@ for i in glob.glob(f'{SEPLUGINS_LOC}/*'):
             print("\n\nSorry I can't go any further. Good Bye...\n\n")
             sys.exit(0);
         else:
+            if os.path.isfile(f'{SEPLUGINS_LOC}/plugines.txt.bak'):
+                os.remove(f'{SEPLUGINS_LOC}/plugines.txt.bak')
             os.rename(f'{SEPLUGINS_LOC}/plugins.txt', f'{SEPLUGINS_LOC}/plugins.txt.bak')
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
 # ARK-4  Example: pops, ms0:/seplugins/cdda_enabler.prx, 1
@@ -123,13 +125,21 @@ if GAME_TXT_EXISTS:
                     game_out.write(line.replace('.prx ', '.prx, ').replace('ef0', 'game, ef0'))
                 game_out.close()
             game_in.close()
-    else:
+    elif "ms0" in FORMAT_CHK:
         with open(GAME_TXT) as game_in:
             with open("plugins.txt", "a") as game_out:
                 for line in game_in:
                     game_out.write(line.replace('.prx ', '.prx, ').replace('ms0', 'game, ms0'))
                 game_out.close()
             game_in.close()
+    else:
+        with open(GAME_TXT) as game_in:
+            with open("plugins.txt", "a") as game_out:
+                for line in game_in:
+                    game_out.write(line.replace('.prx ', '.prx, ').replace('flash0', 'game, flash0'))
+                game_out.close()
+            game_in.close()
+
 
 # POPS
 if POPS_TXT_EXISTS:
@@ -152,13 +162,21 @@ if POPS_TXT_EXISTS:
                     pops_out.write(line.replace('.prx ', '.prx, ').replace('ef0', 'pops, ef0'))
                 pops_out.close()
             pops_in.close()
-    else:
+    elif "ms0" in FORMAT_CHK:
         with open(POPS_TXT) as pops_in:
             with open("plugins.txt", "a") as pops_out:
                 for line in pops_in:
                     pops_out.write(line.replace('.prx ', '.prx, ').replace('ms0', 'pops, ms0'))
                 pops_out.close()
             pops_in.close()
+    else:
+        with open(POPS_TXT) as pops_in:
+            with open("plugins.txt", "a") as pops_out:
+                for line in pops_in:
+                    pops_out.write(line.replace('.prx ', '.prx, ').replace('flash0', 'pops, flash0'))
+                pops_out.close()
+            pops_in.close()
+
 
 # VSH
 if VSH_TXT_EXISTS:
@@ -180,13 +198,21 @@ if VSH_TXT_EXISTS:
                     vsh_out.write(line.replace('.prx ', '.prx, ').replace('ef0', 'vsh, ef0'))
                 vsh_out.close()
             vsh_in.close()
-    else:
+    elif:
         with open(VSH_TXT) as vsh_in:
             with open("plugins.txt", "a") as vsh_out:
                 for line in vsh_in:
                     vsh_out.write(line.replace('.prx ', '.prx, ').replace('ms0', 'vsh, ms0'))
                 vsh_out.close()
             vsh_in.close()
+    else:
+         with open(VSH_TXT) as vsh_in:
+            with open("plugins.txt", "a") as vsh_out:
+                for line in vsh_in:
+                    vsh_out.write(line.replace('.prx ', '.prx, ').replace('flash0', 'vsh, flash0'))
+                vsh_out.close()
+            vsh_in.close()
+
 
 
 if platform.system().lower() == 'linux':
