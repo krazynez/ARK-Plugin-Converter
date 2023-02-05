@@ -198,7 +198,7 @@ if VSH_TXT_EXISTS:
                     vsh_out.write(line.replace('.prx ', '.prx, ').replace('ef0', 'vsh, ef0'))
                 vsh_out.close()
             vsh_in.close()
-    elif:
+    elif "ms0" in FORMAT_CHK:
         with open(VSH_TXT) as vsh_in:
             with open("plugins.txt", "a") as vsh_out:
                 for line in vsh_in:
