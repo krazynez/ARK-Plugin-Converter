@@ -14,6 +14,12 @@ Python3 (Linux/Windows) (STABLE)
 
 `./plugins_converter.py`
 
+- Windows users easiest was:
+    
+    - open `cmd` in `ARK-Plugin-Converter-main` directory
+
+    - run: `C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python37\python plugins_converter.py`
+
 Follow instructions in script.
 
 If you have any bug/issues go [here](https://github.com/krazynez/ARK-Plugin-Converter/issues) and create a bug report please, preferably with screenshots
