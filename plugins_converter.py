@@ -7,8 +7,8 @@ import sys
 import os
 #
 # Author    : KrazyNez
-# Date      : Jan 30, 2023
-# Version   : 0.11
+# Date      : Feb 04, 2023
+# Version   : 0.12
 #
 #
 # PRO/ME Example: ms0:/seplugins/brightness/brightness.prx 1
@@ -95,7 +95,7 @@ def file_checker(file_name=None):
         valid = check.read()
         check.close()
 
-    if valid.decode('utf-8')[:3] != 'ef0' and valid.decode('utf-8')[:3] != 'ms0':
+    if valid.decode('utf-8')[:3] != 'ef0' and valid.decode('utf-8')[:3] != 'ms0' and valid.decode9'utf-8')[:5] != 'flash':
         print(f"\n\nERR: Your '{file_name}' is not UTF-8! Please make sure it is saved at UTF-8\n")
         sys.exit(1)
     else:
@@ -192,6 +192,7 @@ if VSH_TXT_EXISTS:
 if platform.system().lower() == 'linux':
     print(f"\nConvertion Complete.\n\nplugins.txt located: {SEPLUGINS_LOC}/plugins.txt\n\n")
 else:
-    print(f"\nConvertion Complete.\n\nplugins.txt located: {SEPLUGINS_LOC}\\plugins.txt\n\n")
+    k=input(f"\nConvertion Complete.\n\nplugins.txt located: {SEPLUGINS_LOC}\\plugins.txt\n\nPress enter to close...\n")
+
 
 os.chdir(cwd)
