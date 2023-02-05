@@ -95,7 +95,7 @@ def file_checker(file_name=None):
         valid = check.read()
         check.close()
 
-    if valid.decode('utf-8')[:3] != 'ef0' and valid.decode('utf-8')[:3] != 'ms0' and valid.decode9'utf-8')[:5] != 'flash':
+    if valid.decode('utf-8')[:3] != 'ef0' and valid.decode('utf-8')[:3] != 'ms0' and valid.decode('utf-8')[:5] != 'flash':
         print(f"\n\nERR: Your '{file_name}' is not UTF-8! Please make sure it is saved at UTF-8\n")
         sys.exit(1)
     else:
