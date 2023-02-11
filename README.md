@@ -10,7 +10,7 @@ Bash (Linux) (LEGACY)
 
 `./plugins_converter.sh`
 
-Python3 (Linux/Windows) (STABLE)
+Python3 (Linux) (STABLE)
 
 `./plugins_converter.py`
 
@@ -18,7 +18,7 @@ Python3 (Linux/Windows) (STABLE)
     
     - open `cmd` in `ARK-Plugin-Converter-main` directory
 
-    - run: `C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python37\python plugins_converter.py`
+    - run: `python.exe plugins_converter.py`
 
 Follow instructions in script.
 
